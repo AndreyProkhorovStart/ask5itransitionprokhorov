@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <div><button type="submit" class="btn btn-danger">Sign out</button></div>
+    </form>
+    <div class="container">
+        <div class="container"><h3>Список пользователей</h3></div>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-secondary btn-success">Unblock</button>
+                <button type="button" class="btn btn-secondary btn-warning">Block</button>
+                <button type="button" class="btn btn-secondary btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <td><input class="users" type="checkbox" name="users"></td>
+                <th scope="col">Идентификатор</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Email</th>
+                <th scope="col">Дата регистрации</th>
+                <th scope="col">Дата последнего логина</th>
+                <th scope="col">Статус</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#users}}
+                <tr>
+                    <td><input class="user" type="checkbox" name="users"></td>
+                    <td>{{id}}</td>
+                    <td>{{username}}</td>
+                    <td>{{email}}</td>
+                    <td>{{dateRegistration}}</td>
+                    <td>{{dateLogin}}</td>
+                    <td>{{status}}</td>
+                </tr>
+            {{/users}}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
